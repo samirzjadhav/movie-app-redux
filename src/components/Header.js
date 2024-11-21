@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import userIcon from "../assets/user.png";
+import { IoSearchOutline } from "react-icons/io5";
 
 const Header = () => {
   const Navigation = [
@@ -14,6 +15,12 @@ const Header = () => {
       href: "movies",
     },
   ];
+
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate(`/search?q=${searchInput}`);
+  }, [searchInput]);
 
   return (
     <header className="fixed top-0 w-full h-16 bg-neutral-600 bg-opacity-75">
@@ -38,8 +45,21 @@ const Header = () => {
             );
           })}
         </nav>
-        <div className="ml-auto ">
-          <div className="w-8 h-8 rounded-full overflow-hidden cursor-pointer">
+        <div className="ml-auto flex items-center gap-5 ">
+          <form action="" className="flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="Search Here ..."
+              className="bg-transparent px-4 py-1 "
+              onChange={(e) => setSearchInput(e.target.value)}
+              value={searchInput}
+            />
+            <button className="text-2xl text-white">
+              <IoSearchOutline />
+            </button>
+          </form>
+
+          <div className="w-8 h-8 rounded-full overflow-hidden cursor-pointer active:scale-50 transition-all">
             <img src={userIcon} className="w-full h-full" alt="" />
           </div>
         </div>
