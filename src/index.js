@@ -7,7 +7,7 @@ import router from "./routes/route";
 import axios from "axios";
 
 // Setup  axios
-axios.defaults.baseURL = "https://api.themoviedb.org/3/";
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
 axios.defaults.headers.common[
   "Authorization"
 ] = `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`;
