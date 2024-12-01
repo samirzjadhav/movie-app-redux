@@ -4,16 +4,23 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MobileNavigation from "./components/MobileNavigation";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setBannerData } from "./store/MovieoSlice";
 
 const App = () => {
+  const dispatch = useDispatch();
+
   const fetchTrendingData = async () => {
     try {
-      const response = await axios.get(`/trending/all/week`, {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
-        },
-      });
-      console.log("response", response.data);
+      const response = await axios.get(
+        `/trending/all/week`,
+        dispatch(setBannerData(response.data.results)),
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+          },
+        }
+      );
     } catch (error) {
       console.error("API error:", error);
     }
