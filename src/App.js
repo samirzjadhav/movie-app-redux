@@ -12,15 +12,13 @@ const App = () => {
 
   const fetchTrendingData = async () => {
     try {
-      const response = await axios.get(
-        `/trending/all/week`,
-        dispatch(setBannerData(response.data.results)),
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
-          },
-        }
-      );
+      const response = await axios.get(`/trending/all/week`, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+        },
+      });
+      // Dispatch the action with the response data
+      dispatch(setBannerData(response.data.results));
     } catch (error) {
       console.error("API error:", error);
     }

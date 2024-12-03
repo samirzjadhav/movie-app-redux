@@ -8,7 +8,7 @@ import axios from "axios";
 import store from "./store/store";
 import { Provider } from "react-redux";
 
-// Setup  axios
+// Setup axios
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 axios.defaults.headers.common[
   "Authorization"
@@ -16,12 +16,11 @@ axios.defaults.headers.common[
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
-  </Provider>
-
-  // </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </Provider>
+  </React.StrictMode>
 );
