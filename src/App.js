@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import MobileNavigation from "./components/MobileNavigation";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setBannerData } from "./store/MovieoSlice";
+import { setBannerData, setImageUrl } from "./store/MovieoSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,8 +24,16 @@ const App = () => {
     }
   };
 
+  const fetchConfiguration = async () => {
+    try {
+      const response = await axios.get("/configuration");
+      dispatch(setImageUrl(response.data.images.secure_base_url + "original"));
+    } catch (error) {}
+  };
+
   useEffect(() => {
     fetchTrendingData();
+    fetchConfiguration();
   }, []);
 
   return (

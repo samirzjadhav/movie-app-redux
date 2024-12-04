@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  bannerData: [],
+  imageUrl: "",
+};
 
 export const MovieoSlice = createSlice({
   name: "movieo",
@@ -9,9 +12,12 @@ export const MovieoSlice = createSlice({
     setBannerData: (state, action) => {
       state.bannerData = action.payload;
     },
+    setImageUrl: (state, action) => {
+      state.imageUrl = action.payload;
+    },
   },
 });
 
-export const { setBannerData } = MovieoSlice.actions;
+export const { setBannerData, setImageUrl } = MovieoSlice.actions;
 
 export default MovieoSlice.reducer;
