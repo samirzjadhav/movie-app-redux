@@ -18,7 +18,7 @@ const BannerHome = () => {
           return (
             <div
               key={index}
-              className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden"
+              className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative"
             >
               <div className="w-full h-full">
                 {/* You can access data properties here, for example: */}
@@ -30,6 +30,7 @@ const BannerHome = () => {
                 <h3>{data.title}</h3>
                 <p>{data.description}</p>
               </div>
+              <div className="absolute top-0 w-full h-full bg-gradient-to-t from-neutral-900 to-transparent"></div>
             </div>
           );
         })}
