@@ -12,20 +12,29 @@ const BannerHome = () => {
   }
 
   return (
-    <div>
-      <div>
+    <section className="w-full h-full">
+      <div className="flex min-h-full max-h-[95vh]">
         {bannerData.map((data, index) => {
           return (
-            <div key={index}>
-              {/* You can access data properties here, for example: */}
-              <img src={imageUrl + data.backdrop_path} alt="" />
-              <h3>{data.title}</h3>
-              <p>{data.description}</p>
+            <div
+              key={index}
+              className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden"
+            >
+              <div className="w-full h-full">
+                {/* You can access data properties here, for example: */}
+                <img
+                  src={imageUrl + data.backdrop_path}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+                <h3>{data.title}</h3>
+                <p>{data.description}</p>
+              </div>
             </div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 
