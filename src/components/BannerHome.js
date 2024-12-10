@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 
 const BannerHome = () => {
@@ -6,10 +8,26 @@ const BannerHome = () => {
   const bannerData = useSelector((state) => state.MovieoData.bannerData);
   const imageUrl = useSelector((state) => state.MovieoData.imageUrl);
 
+  const [currentImage, setCurrentImage] = useState(0);
+
   // Conditional rendering to handle undefined or empty bannerData
   if (!bannerData || bannerData.length === 0) {
     return <div>Loading banner data...</div>; // Show loading or a fallback message
   }
+
+  const handleNext = () => {
+    console.log("Next button clicked");
+    if (currentImage < bannerData.length - 1) {
+      setCurrentImage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    console.log("Previous button clicked");
+    if (currentImage > 0) {
+      setCurrentImage((prev) => prev - 1);
+    }
+  };
 
   return (
     <section className="w-full h-full">
@@ -18,7 +36,8 @@ const BannerHome = () => {
           return (
             <div
               key={index}
-              className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative"
+              className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative group"
+              style={{ transform: `translateX(-${currentImage * 100}%)` }}
             >
               <div className="w-full h-full">
                 {/* You can access data properties here, for example: */}
@@ -28,6 +47,21 @@ const BannerHome = () => {
                   className="h-full w-full object-cover"
                 />
               </div>
+              <div className="absolute top-0 w-full h-full hidden justify-between items-center px-4 z-10 group-hover:lg:flex">
+                <button
+                  onClick={handlePrev}
+                  className="bg-white p-1 rounded-full text-xl text-black"
+                >
+                  <FaAngleLeft />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="bg-white p-1 rounded-full text-xl text-black"
+                >
+                  <FaAngleRight />
+                </button>
+              </div>
+
               <div className="absolute top-0 w-full h-full bg-gradient-to-t from-neutral-900 to-transparent"></div>
               <div className="container mx-auto ">
                 <div className="w-full absolute bottom-0 max-w-md px-3">
