@@ -12,17 +12,19 @@ const Home = () => {
         <h2 className="text-lg font-bold lg:text-3xl mb-3 text-white ">
           Tranding Data
         </h2>
-        <div className="grid grid-cols-[repeat(auto-fit,230px)] gap-6">
-          {trandingData.map((data, index) => {
-            return (
-              <Card
-                key={data.id}
-                data={data}
-                index={index + 1}
-                tranding={true}
-              />
-            );
-          })}
+        <div className="overflow-hidden">
+          <div className="grid grid-cols-[repeat(auto-fit,230px)] grid-flow-col gap-6 overflow-x-scroll">
+            {trandingData.map((data, index) => {
+              return (
+                <Card
+                  key={data.id}
+                  data={data}
+                  index={index + 1}
+                  tranding={true}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
