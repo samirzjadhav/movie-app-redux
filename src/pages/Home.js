@@ -1,32 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BannerHome from "../components/BannerHome";
 import { useSelector } from "react-redux";
 import Card from "../components/Card";
+import HorizontalScrollCard from "../components/HorizontalScrollCard";
+import useFetch from "../Hooks/useFetch";
 
 const Home = () => {
   const trandingData = useSelector((state) => state.MovieoData.bannerData);
+  const { data: nowPlayingData } = useFetch("/movie/now_playing");
+  const { data: TopRatedData } = useFetch("/movie/top_rated");
+  const { data: PopularTvShow } = useFetch("/tv/popular");
+  const { data: OnTheAirShowData } = useFetch("/tv/on_the_air");
+
   return (
     <div>
       <BannerHome />
-      <div className="container mx-auto px-3 my-10">
-        <h2 className="text-lg font-bold lg:text-3xl mb-3 text-white ">
-          Tranding Data
-        </h2>
-        <div className="overflow-hidden">
-          <div className="grid grid-cols-[repeat(auto-fit,230px)] grid-flow-col gap-6 overflow-x-scroll">
-            {trandingData.map((data, index) => {
-              return (
-                <Card
-                  key={data.id}
-                  data={data}
-                  index={index + 1}
-                  tranding={true}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <HorizontalScrollCard
+        data={trandingData}
+        heading={"Trending"}
+        trending={true}
+      />
+      <HorizontalScrollCard data={nowPlayingData} heading={"Now Playing"} />
+      <HorizontalScrollCard data={TopRatedData} heading={"Top Rated"} />
+      <HorizontalScrollCard data={PopularTvShow} heading={"Popular TV Show"} />
+      <HorizontalScrollCard data={OnTheAirShowData} heading={"On The Air"} />
     </div>
   );
 };
