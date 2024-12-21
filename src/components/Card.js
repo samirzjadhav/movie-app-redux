@@ -3,13 +3,14 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-const Card = ({ data, tranding, index }) => {
+const Card = ({ data, tranding, index, media_type }) => {
   const imageUrl = useSelector((state) => state.MovieoData.imageUrl);
+  const mediaType = data.media_type ?? media_type;
 
   return (
     <Link
-      to={"/" + data.media_type + "/" + data.id}
-      className="w-full min-w-[230px] max-w-[230px] h-90 rounded overflow-hidden relative"
+      to={"/" + mediaType + "/" + data.id}
+      className="w-full min-w-[230px] max-w-[230px] h-90 rounded overflow-hidden block relative hover:scale-105 transition-transform"
     >
       <img src={imageUrl + data?.poster_path} alt="" />
       <div className="absolute top-4">
