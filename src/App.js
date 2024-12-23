@@ -40,7 +40,7 @@ const App = () => {
   return (
     <main className="pb-14 lg:pb-0">
       <Header />
-      <div className="">
+      <div className="min-h-[80vh]">
         <Outlet />
       </div>
       <Footer />
