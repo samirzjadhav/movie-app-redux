@@ -3,11 +3,13 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Card from "../components/Card";
+import { useNavigate } from "react-router-dom";
 
 const SearchPage = () => {
   const location = useLocation();
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -47,6 +49,14 @@ const SearchPage = () => {
 
   return (
     <div className="py-16">
+      <div className="lg:hidden my-2 mx-1 sticky top-[70px] z-30">
+        <input
+          className="px-4 py-1 text-lg w-full bg-white text-neutral-900 rounded-xl border-none"
+          type="text"
+          placeholder="Search here... "
+          onChange={(e) => navigate(`/search?q=${e.target.value}`)}
+        />
+      </div>
       <div className="container mx-auto">
         <h3 className="capitalize lg:text-xl text-lg font-semibold my-3">
           Search Results
