@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useFetchDetail from "../Hooks/useFetchDetail";
 import { useSelector } from "react-redux";
 import moment from "moment";
+import Divider from "../components/Divider";
 
 const DetailsPage = () => {
   const param = useParams();
@@ -15,6 +16,16 @@ const DetailsPage = () => {
   );
 
   const duration = (Number(data?.runtime) / 60).toFixed(1);
+  const writer =
+    castData?.crew
+      ?.filter((el) => el?.job === "Writer" || el?.job === "Screenwriter") // Adjust based on API response
+      ?.map((el) => el?.name)
+      .join(", ") || "N/A"; // Fallback if no writers are found
+
+  console.log("Writer:", writer);
+
+  console.log("writer", writer);
+  console.log("crew", castData);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -52,7 +63,8 @@ const DetailsPage = () => {
             {data?.title || data?.name}
           </h2>
           <p className="text-neutral-400">{data?.tagline}</p>
-          <div className="flex items-center gap-3 my-3">
+          <Divider />
+          <div className="flex items-center gap-3">
             <p className="">Rating: {Number(data?.vote_average).toFixed(1)}+</p>
             <span>|</span>
             <p> View: {Number(data?.vote_count)}</p>
@@ -61,9 +73,11 @@ const DetailsPage = () => {
               Duration: {duration[0]}h {duration[2]}m
             </p>
           </div>
+          <Divider />
           <div className="">
             <h3 className="text-xl font-bold text-white mb-1">Overview</h3>
             <p>{data?.overview}</p>
+            <Divider />
             <div className="flex items-center gap-3 text-center">
               <p>Status: {data?.status}</p>
               <span>|</span>
@@ -74,6 +88,17 @@ const DetailsPage = () => {
               <span>|</span>
               <p>Revenue: {Number(data?.revenue)}</p>
             </div>
+            <Divider />
+          </div>
+          <div className="">
+            <p>
+              {" "}
+              <span className="text-white">Director : </span>{" "}
+              {castData?.crew[0]?.name}
+            </p>
+            <p>
+              <span className="text-white">Writer : </span> {writer}
+            </p>
           </div>
         </div>
       </div>
