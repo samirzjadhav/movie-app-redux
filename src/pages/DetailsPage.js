@@ -1,9 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetchDetail from "../Hooks/useFetchDetail";
+import useFetch from "../Hooks/useFetch";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import Divider from "../components/Divider";
+import HorizontalScrollCard from "../components/HorizontalScrollCard";
 
 const DetailsPage = () => {
   const param = useParams();
@@ -14,6 +16,12 @@ const DetailsPage = () => {
   const { data: castData } = useFetchDetail(
     `/${param?.explore}/${param?.id}/credits`
   );
+
+  const { data: similarData } = useFetch(
+    `/${param?.explore}/${param?.id}/similar`
+  );
+
+  console.log("data", data);
 
   const exchangeRate = 0.013;
 
@@ -124,6 +132,12 @@ const DetailsPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="">
+        <HorizontalScrollCard
+          data={similarData}
+          heading={"Similar" + param?.explore}
+        />
       </div>
     </div>
   );
