@@ -15,16 +15,14 @@ const DetailsPage = () => {
     `/${param?.explore}/${param?.id}/credits`
   );
 
+  const exchangeRate = 0.013;
+
   const duration = (Number(data?.runtime) / 60).toFixed(1);
   const writer =
     castData?.crew
       ?.filter((el) => el?.job === "Writer" || el?.job === "Screenwriter") // Adjust based on API response
       ?.map((el) => el?.name)
       .join(", ") || "N/A"; // Fallback if no writers are found
-
-  console.log("Writer:", writer);
-
-  console.log("writer", writer);
   console.log("crew", castData);
 
   if (loading) return <div>Loading...</div>;
@@ -47,7 +45,7 @@ const DetailsPage = () => {
         </div>
       </div>
       <div className="mx-auto container px-3 py-16 lg:py-0 flex flex-col lg:flex-row gap-5 lg:gap-10">
-        <div className=" relative mx-auto lg:-mt-28 lg:mx-0 w-fit">
+        <div className=" relative mx-auto lg:-mt-28 lg:mx-0 w-fit min-w-60">
           {data?.poster_path ? (
             <img
               className="h-80 w-60 object-cover rounded"
@@ -59,7 +57,7 @@ const DetailsPage = () => {
           )}
         </div>
         <div className="">
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl lg:text-4xl font-bold text-white">
             {data?.title || data?.name}
           </h2>
           <p className="text-neutral-400">{data?.tagline}</p>
@@ -86,7 +84,9 @@ const DetailsPage = () => {
                 {moment(data?.release_date).format("MMMM Do YYYY")}
               </p>
               <span>|</span>
-              <p>Revenue: {Number(data?.revenue)}</p>
+              <p>
+                Revenue: ${(Number(data?.revenue) * exchangeRate).toFixed(2)}
+              </p>
             </div>
             <Divider />
           </div>
@@ -96,9 +96,32 @@ const DetailsPage = () => {
               <span className="text-white">Director : </span>{" "}
               {castData?.crew[0]?.name}
             </p>
+            <Divider />
             <p>
               <span className="text-white">Writer : </span> {writer}
             </p>
+            <Divider />
+            <h2 className="text-lg lg:text-xl font-bold my-3">Star cast :</h2>
+            <div className="grid grid-cols-[repeat(auto-fit,96px)] gap-5 mb-10">
+              {castData?.cast
+                ?.filter((el) => el?.profile_path)
+                .map((cast, index) => {
+                  return (
+                    <div className="">
+                      <div className="">
+                        <img
+                          className="w-24 h-24 rounded-full object-cover"
+                          src={imageUrl + cast?.profile_path}
+                          alt=""
+                        />
+                      </div>
+                      <p className="font-bold text-center text-sm">
+                        {cast?.name}
+                      </p>
+                    </div>
+                  );
+                })}
+            </div>
           </div>
         </div>
       </div>
