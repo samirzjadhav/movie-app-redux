@@ -79,12 +79,12 @@ Here's the list of major dependencies used in the project:
 
 1. Clone the repository:  
    ```bash  
-   git clone https://github.com/your-username/movie-app.git  
+   git clone https://github.com/samirzjadhav/movie-app-redux
    ```  
 
 2. Navigate to the project directory:  
    ```bash  
-   cd movie-app  
+   cd movie-app-redux  
    ```  
 
 3. Install dependencies:  
@@ -94,7 +94,7 @@ Here's the list of major dependencies used in the project:
 
 4. Start the development server:  
    ```bash  
-   npm start  
+   npm run start  
    ``` 
 
 ## 📄 License  
