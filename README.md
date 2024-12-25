@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🎬 Movie Search Webpage  
 
-## Available Scripts
+Welcome to **Movie Search Webpage**, a sleek and user-friendly platform for exploring and discovering movies. Powered by **React**, **Redux**, and other modern tools, this application ensures a seamless experience for users.  
 
-In the project directory, you can run:
 
-### `npm start`
+🌐 **[Live Demo](https://movie-app-redux-eight.vercel.app/)**  
+📂 **[GitHub Repository](https://github.com/samirzjadhav/movie-app-redux)**  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 🖼 Images  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Here are some images of the **Movie Search Webpage** in action:  
 
-### `npm run build`
+### Homepage  
+![Homepage Screenshot](./src/assets/homepage.png)  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Movie Search Feature  
+![Movie Search Screenshot](./src/assets/search.png)  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Movie Details Page  
+![Movie Details Screenshot](./src/assets/details.png)  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🛠 Features  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 🔍 **Search Movies**: Quickly find movies by title using the search bar.  
+- 🗓 **Release Dates**: Get details about movie release dates.  
+- ⭐ **Popular and Trending**: Explore trending and popular movies.  
+- 🕒 **Moments**: Integrated with **Moment.js** to display dates in a user-friendly format.  
+- 📡 **Axios Integration**: Fetches movie data efficiently using Axios.  
+- 🔄 **State Management**: Powered by **Redux Toolkit** for smooth and scalable state management.  
+- 🌐 **Routing**: Navigate between pages effortlessly with **React Router DOM**.  
+- 🎨 **Tailwind CSS**: Clean, modern, and responsive design.  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🚀 Tech Stack  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Frontend**: React, Redux Toolkit, React Router DOM  
+- **Styling**: Tailwind CSS  
+- **API Handling**: Axios  
+- **Date Management**: Moment.js  
+- **Icons**: React Icons  
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📦 Dependencies  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Here's the list of major dependencies used in the project:  
 
-### Code Splitting
+```json  
+{
+  "@reduxjs/toolkit": "^2.3.0",
+  "axios": "^1.7.7",
+  "moment": "^2.30.1",
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "react-icons": "^5.3.0",
+  "react-redux": "^9.1.2",
+  "react-router-dom": "^6.28.0",
+  "tailwindcss": "^3.4.15"
+}
+```  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🛠 Getting Started  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Prerequisites  
 
-### Making a Progressive Web App
+- Node.js and npm installed.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Installation  
 
-### Advanced Configuration
+1. Clone the repository:  
+   ```bash  
+   git clone https://github.com/your-username/movie-app.git  
+   ```  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. Navigate to the project directory:  
+   ```bash  
+   cd movie-app  
+   ```  
 
-### Deployment
+3. Install dependencies:  
+   ```bash  
+   npm install  
+   ```  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+4. Start the development server:  
+   ```bash  
+   npm start  
+   ``` 
 
-### `npm run build` fails to minify
+## 📄 License  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the **MIT License**.  
+
+--- 
+
+Thank you for visiting **Movie Search Webpage**! Feel free to explore the codebase, provide feedback, and enjoy the app! 🎥  
