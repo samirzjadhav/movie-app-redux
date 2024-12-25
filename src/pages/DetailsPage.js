@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 import Divider from "../components/Divider";
 import HorizontalScrollCard from "../components/HorizontalScrollCard";
+import VideoPlay from "../components/VideoPlay";
+import { useState } from "react";
 
 const DetailsPage = () => {
   const param = useParams();
@@ -21,7 +23,12 @@ const DetailsPage = () => {
     `/${param?.explore}/${param?.id}/similar`
   );
 
-  console.log("data", data);
+  const { data: recommendationData } = useFetch(
+    `/${param?.explore}/${param?.id}/recommendations`
+  );
+
+  const [playVideo, setPlayVideo] = useState(false);
+  const [playVideoId, setPlayVideoId] = useState("");
 
   const exchangeRate = 0.013;
 
@@ -32,6 +39,11 @@ const DetailsPage = () => {
       ?.map((el) => el?.name)
       .join(", ") || "N/A"; // Fallback if no writers are found
   console.log("crew", castData);
+
+  const handlePlayVideo = (data) => {
+    setPlayVideoId(data);
+    setPlayVideo(true);
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -63,6 +75,14 @@ const DetailsPage = () => {
           ) : (
             <div>No Image Available</div>
           )}
+          <button
+            onClick={() => handlePlayVideo(data)}
+            className="mt-3 w-full py-2 px-4 text-center bg-white text-black rounded font-bold text-lg 
+             hover:bg-gradient-to-l from-red-500 to-orange-500 hover:scale-105 transition-all 
+             duration-300 ease-in-out z-40"
+          >
+            Play Now
+          </button>
         </div>
         <div className="">
           <h2 className="text-2xl lg:text-4xl font-bold text-white">
@@ -136,9 +156,22 @@ const DetailsPage = () => {
       <div className="">
         <HorizontalScrollCard
           data={similarData}
-          heading={"Similar" + param?.explore}
+          heading={"Similar " + param?.explore}
+          media_type={param?.explore}
+        />
+        <HorizontalScrollCard
+          data={recommendationData}
+          heading={"Recommendation " + param?.explore}
+          media_type={param?.explore}
         />
       </div>
+      {playVideo && (
+        <VideoPlay
+          videoId={playVideoId}
+          close={() => setPlayVideo(false)}
+          media_type={param?.explore}
+        />
+      )}
     </div>
   );
 };
