@@ -79,7 +79,7 @@ Here's the list of major dependencies used in the project:
 
 1. Clone the repository:  
    ```bash  
-   git clone https://github.com/samirzjadhav/movie-app-redux
+   git clone https://github.com/samirzjadhav/movie-app-redux.git
    ```  
 
 2. Navigate to the project directory:  
